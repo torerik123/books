@@ -6,15 +6,26 @@
     <title>Book review</title>
 </head>
 <body>
-    Search
+    <form action="{{ url_for('book') }}" method="post">
+        <div class="form-group">        
+            
+            <label for="search">Search</label>
+            <input list="books" id="allbooks" name="books" />
+            <datalist id="books">
 
-    <div class="form-group">
-        <select class="form-control" name="allbooks">
-            {% for book in allbooks %}
-                <option value="{{ book.id }}">{{ book.title }}</option>
-            {% endfor %}
-        </select>
-    </div>
+                {% for book in allbooks %}
+    
+                <option value="{{book.title}}">
+    
+                {% endfor %}
+    
+            </datalist>
+            
+            <button type="submit">Submit</button>
+        </div>
+    </form>   
+
+    
 
 </body>
 </html>
