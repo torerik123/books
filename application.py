@@ -18,10 +18,21 @@ def index():
         return render_template("index.html", allbooks=allbooks)
 
     else:
-        # Get selected book
-        book = request.form.get("book_list") # returns none?
-        
-        # Lookup in database
 
-            # If not found
-        return str(book) #render_template("book.html", x=x)
+        # Get selected book
+        selected = request.form.get("book_list")
+
+        # Lookup in database
+        lookup = Book.query.filter_by(title=selected).first()
+
+            # If not found: ???
+
+        title = lookup.title
+        author = lookup.author
+        year = lookup.year
+        isbn = lookup.isbn
+
+        return render_template("book.html", title=title, author=author, year=year, isbn=isbn)
+
+     
+        
