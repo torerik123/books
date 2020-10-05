@@ -24,8 +24,18 @@ def index():
 
         # Lookup in database
         lookup = Book.query.filter_by(title=selected).first()
+        #lookup = Book.query.filter_by(title=selected).all()
 
-            # If not found: ???
+
+        ## add some logic to get all titles in selected
+        #results = []
+
+        #for result in lookup:
+        #    results.append(result.title)
+        
+        # if more than 1 results
+
+           # If not found: ???
 
         title = lookup.title
         author = lookup.author

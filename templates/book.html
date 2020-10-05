@@ -3,25 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/styles.css" rel="stylesheet">
     <title>Book title</title>
 </head>
 <body>
+    <div class="container">
+        <h1>{{ title }}</h1>
+        <div class="cover">Book cover image</div>
+        <h3>Author: {{ author }}, Year: {{ year }}, ISBN: {{ isbn }} </h3>
+        <p>Lorem ipsum dolor sit amet 
+            Lorem ipsum dolor sit amet 
+            Lorem ipsum dolor sit amet 
+            Lorem ipsum dolor sit amet 
+            Lorem ipsum dolor sit amet 
+            Lorem ipsum dolor sit amet 
+            Lorem ipsum dolor sit amet 
+            Lorem ipsum dolor sit amet 
+            Lorem ipsum dolor sit amet 
+        </p>
 
-    <h1>{{ title }}</h1>
-    
-    <div>Book cover image</div>
-    
-    <h3>Author: {{ author }}, Year: {{ year }}, ISBN: {{ isbn }} </h3>
-    
-    <p>Lorem ipsum dolor sit amet 
-        Lorem ipsum dolor sit amet 
-        Lorem ipsum dolor sit amet 
-        Lorem ipsum dolor sit amet 
-        Lorem ipsum dolor sit amet 
-        Lorem ipsum dolor sit amet 
-        Lorem ipsum dolor sit amet 
-        Lorem ipsum dolor sit amet 
-        Lorem ipsum dolor sit amet 
-    </p>
+            <h2>Reviews</h2>
+            <div>Rating: * * * * * </div>
+            <p>Lorem ipsum dolor sit amet
+                Lorem ipsum dolor sit amet
+                Lorem ipsum dolor sit amet
+                Lorem ipsum dolor sit amet
+            </p>
+    </div>
+
 </body>
 </html>

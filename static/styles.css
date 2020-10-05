@@ -1,0 +1,26 @@
+.container {
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-left:20%;
+    margin-right:20%;    
+}
+
+.cover {
+    height:200px;
+    width:180px;
+    background-color: red;
+}
+
+.slider {
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.slider-image {
+    width:150px;
+    height:180px;
+    background-color: green;
+}
