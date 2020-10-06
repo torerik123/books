@@ -22,27 +22,31 @@ def index():
         # Get selected book
         selected = request.form.get("book_list")
 
-        # Lookup in database
-        lookup = Book.query.filter_by(title=selected).first()
-        #lookup = Book.query.filter_by(title=selected).all()
+        if selected != "":
+            # Lookup in database, ignores case
+            lookup = Book.query.filter(Book.title.ilike('%' + selected + '%')).all()
+            results = []
 
+                # TODO: If more than 1 rows
+            for result in lookup:
+                results.append(result)
 
-        ## add some logic to get all titles in selected
-        #results = []
+            if len(results) > 1:    
+                return render_template("results.html", results=results)
+            else:
+                title = result.title
+                author = result.author
+                year = result.year
+                isbn = result.isbn
 
-        #for result in lookup:
-        #    results.append(result.title)
+                return render_template("book.html", title=title, author=author, year=year, isbn=isbn)
+
+        else:
+            return "No matches"
+       
+
         
-        # if more than 1 results
-
-           # If not found: ???
-
-        title = lookup.title
-        author = lookup.author
-        year = lookup.year
-        isbn = lookup.isbn
-
-        return render_template("book.html", title=title, author=author, year=year, isbn=isbn)
+        
 
      
         
