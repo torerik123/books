@@ -3,11 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/styles.css" rel="stylesheet">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    {% block main %}
-    
+    <!--Search-->
+    <form action="{{ url_for('index') }}" method="post">
+        <div class="form-group">        
+            <input list="book" id="allbooks" placeholder="Title, Author, ISBN" name="book_list" />
+            
+            <datalist id="book">
+                {% for book in allbooks %}
+
+                <option id="{{ book.id }}" value="{{ book.title }}" name="book_name">
+
+                {% endfor %}
+            </datalist>
+            
+            <button type="submit">Search</button>
+        </div>
+    </form>
+
+    {% block main %}   
+
     {% endblock %}
 </body>
 </html>

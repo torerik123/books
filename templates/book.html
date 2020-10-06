@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/static/styles.css" rel="stylesheet">
-    <title>Book title</title>
-</head>
-<body>
+{% extends "layout.html" %}
+
+{% block title %}
+    Book title</title>
+{% endblock %}
+
+{% block main %}
     <div class="container">
         <h1>{{ title }}</h1>
         <div class="cover">Book cover image</div>
@@ -30,6 +28,4 @@
                 Lorem ipsum dolor sit amet
             </p>
     </div>
-
-</body>
-</html>
+{% endblock %}
