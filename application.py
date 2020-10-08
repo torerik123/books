@@ -2,7 +2,9 @@ from flask import Flask, render_template, session, redirect, url_for, request
 from flask_session import Session
 from tempfile import mkdtemp
 import os
+import requests
 from models import *
+import json
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
@@ -43,7 +45,19 @@ def index():
 
         else:
             return "No matches"
-       
+
+
+@app.route("/get_book/<int:isbn>")
+def get_book(isbn):
+    """ Call to Goodreads API"""
+    
+    res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": "zID72O5cas5E9C4byZW1w", "isbns": isbn })
+    
+    if res.status_code != 200:
+        raise Exception("ERROR: API request unsuccesful")
+    
+    data = res.json()
+    return str(data)   
 
         
         
