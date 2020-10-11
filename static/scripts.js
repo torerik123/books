@@ -1,5 +1,25 @@
-// TODO: Get top 10 NY times bestsellers
+
 const isbns = [9780244951344, 9789291209910, 9788293516163, 9781560657699 , 9780198527565, 9780521421881 ,9780520221581, 9780719057298 , 9780307485779, 9788256019878];
+let book_titles = []
+
+API_KEY = 'GmNm9aeq6FeIaUjHXriO80RCzGrWEHuS';
+
+// Get bestsellers list from NYT API
+fetch('https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-key=' + API_KEY)
+.then(response => response.json())
+.then(data => {
+
+  const bestsellers = data['results'];
+  
+  // Get title of top 10 best selling books
+  for (i = 0; i < 10; i++) {
+
+      book_titles.push(bestsellers[i]['title']);
+  }
+
+  console.log(book_titles);
+});
+
 
 let img_nr = 0;
 
