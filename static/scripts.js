@@ -1,6 +1,4 @@
-
-const isbns = [9780244951344, 9789291209910, 9788293516163, 9781560657699 , 9780198527565, 9780521421881 ,9780520221581, 9780719057298 , 9780307485779, 9788256019878];
-let book_titles = []
+const bestseller_isbns = [];
 
 API_KEY = 'GmNm9aeq6FeIaUjHXriO80RCzGrWEHuS';
 
@@ -13,35 +11,47 @@ fetch('https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-
   
   // Get title of top 10 best selling books
   for (i = 0; i < 10; i++) {
+    
+    // If no ISBN exists
+    if (!bestsellers[i]['isbns'][0]) {
+      
+      // TODO: GET ISBN BY TITLE - CALL FUNCTION
 
-      book_titles.push(bestsellers[i]['title']);
+      console.log("NO ISBN FOUND");
+    }
+
+    else {
+      const isbn13 = bestsellers[i]['isbns'][0]['isbn13'];
+      bestseller_isbns.push(parseInt(isbn13));      
+    }      
   }
 
-  console.log(book_titles);
+  let img_nr = 0;
+
+  // Book covers
+  bestseller_isbns.forEach(isbn => {
+    
+    // Get JSON response from Google Books API
+    fetch('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn)
+    .then(response => response.json())
+    .then(data => {
+      
+      // Get thumbnail image
+      const image = data['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
+
+      // Get ID of slider element
+      const carousel = document.querySelector("#slider" + img_nr);
+
+      // Set source to image link
+      carousel.src = image;  
+      img_nr++;
+      });
+  });
 });
 
 
-let img_nr = 0;
 
-// For every element in isbns list
-isbns.forEach(isbn => {
-  
-  // Get JSON response from Google Books API
-  fetch('https://www.googleapis.com/books/v1/volumes?q=isbn=' + isbn)
-  .then(response => response.json())
-  .then(data => {
-    
-    // Get thumbnail image
-    const image = data['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
 
-    // Get ID of slider element
-    const carousel = document.querySelector("#slider" + img_nr);
-
-    // Set source to image link
-    carousel.src = image;  
-    img_nr++;
-    });
-  });
 
 
 
