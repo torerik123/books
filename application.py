@@ -51,8 +51,9 @@ def index():
 def get_book(isbn):
     """ Call to Goodreads API"""
     
-    res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": "zID72O5cas5E9C4byZW1w", "isbns": isbn })
-    
+    # Reviews
+    res = requests.get("https://www.goodreads.com/book/isbn/ISBN?format=json", params={"key": "zID72O5cas5E9C4byZW1w", "isbn": isbn })
+
     if res.status_code != 200:
         raise Exception("ERROR: API request unsuccesful")
     
