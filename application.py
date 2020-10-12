@@ -13,7 +13,7 @@ db.init_app(app)
 
 
 @app.route("/", methods=["GET", "POST"])
-def index():
+def search():
 
     if request.method == "GET":
         allbooks = Book.query.all()
@@ -41,10 +41,36 @@ def index():
                 year = result.year
                 isbn = result.isbn
 
-                return render_template("book.html", title=title, author=author, year=year, isbn=isbn)
+                return redirect(url_for('book', isbn=isbn))
+                #return redirect(url_for('book' isbn=isbn))
 
         else:
             return "No matches"
+
+
+@app.route("/book/<int:isbn>")
+def book(isbn):
+    """ Lookup book by isbn """ 
+         
+    lookup = Book.query.filter(Book.isbn.like('%' + str(isbn) + '%')).all()
+    results = []
+
+    for result in lookup:
+            results.append(result)
+
+    # If more than 1 results, return search page
+    if len(lookup) > 1:
+        return render_template("results.html", results=results)
+            
+    # Show book info
+    else: 
+                
+        title = result.title
+        author = result.author
+        year = result.year
+        isbn = result.isbn
+
+        return render_template("book.html", title=title, author=author, year=year, isbn=isbn)
 
 
 @app.route("/get_book/<int:isbn>")
