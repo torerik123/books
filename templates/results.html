@@ -5,13 +5,32 @@
 {% endblock %}
 
 {% block main %}
-    <h1>Search results</h1>
+    
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Search results</h1>
+        </div>
+        <p class="sort">Sort by: Author | Title</p>
+    </div>
+
     <ul>
         
         {% for result in results %}
         
-        <li>{{result.title}}</li>
+        <li class="result"> 
+            <div class="row">
+                <img class="bookcover">
+                <div class="col">
+                    <p>{{result.title}}</p>
+                    <p>By: {{result.author}}</p>
+                    <p>Year: {{result.year}}</p>
+                    <p>ISBN: {{result.isbn}}</p>
+                </div>
+            </div>
+        </li>
 
         {% endfor %}
     </ul>
+</div>
 {% endblock %}

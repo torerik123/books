@@ -1,4 +1,4 @@
-.container {
+.bestsellers {
     display:flex;
     justify-content: center;
     flex-direction: column;
@@ -7,6 +7,10 @@
     margin-right:20%;    
 }
 
+/* Navbar */
+
+
+/* Index */
 .cover {
     height:200px;
     width:180px;
@@ -23,4 +27,56 @@
     width:150px;
     height:180px;
     background-color: green;
+}
+
+.index-slider {
+    height:50vh;
+    background-color:cyan;
+}
+
+.footer {
+    display:flex;
+    justify-content: center;
+}
+
+.footer-items {
+    margin-top:5%;
+    display:flex;
+    flex-direction: row;
+}
+
+/* Search results */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    background-color: green;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+.result {
+    display:flex;
+    justify-content: center;
+    background-color:cyan;
+    margin-top: 20px;
+    width:60em;
+    height:10em;
+}
+.bookcover {
+    display:flex;
+    align-self: flex-start;
+    background-color:red;
+    width:4em;
+    height:6em;
+    margin-right:10px;
+}
+
+.result > .row {
+    border-style:solid;
+    align-
 }
