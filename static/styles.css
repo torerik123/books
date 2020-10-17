@@ -61,11 +61,33 @@ ul {
 
 .result {
     display:flex;
-    justify-content: center;
+    flex-direction:row;
+    justify-content: flex-start;
     background-color:cyan;
     margin-top: 20px;
     width:60em;
     height:10em;
+}
+
+/* Container for search results */
+.result-row {
+    display:flex;
+    width:inherit;
+}
+
+.result-col-left {
+    width:250px;
+    border-style: solid;
+}
+
+.result-col-middle {
+    width:600px;
+    border-style: solid;
+}
+
+.result-col-right {
+        
+    border-style: solid;
 }
 .bookcover {
     display:flex;
@@ -76,7 +98,3 @@ ul {
     margin-right:10px;
 }
 
-.result > .row {
-    border-style:solid;
-    align-
-}
