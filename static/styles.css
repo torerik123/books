@@ -81,7 +81,9 @@ ul {
 }
 
 .result-col-middle {
-    width:600px;
+    display:flex;
+    flex-direction:row;
+    width:500px;
     border-style: solid;
 }
 
@@ -89,6 +91,14 @@ ul {
         
     border-style: solid;
 }
+
+.book-img {
+    display:flex;
+    border-style: solid;
+    margin-left:-10%;
+    width:100px;
+}
+
 .bookcover {
     display:flex;
     align-self: flex-start;
@@ -97,4 +107,17 @@ ul {
     height:6em;
     margin-right:10px;
 }
+
+.book-info {
+    border-style:solid;
+    width:400px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.book-title {
+    color:red;
+}
+]
 
