@@ -21,7 +21,17 @@
         <li class="result"> 
             <div class="result-row">
                 <div class="result-col-left"> margin </div>
-                <div class="result-col-middle"> Content </div>
+                <div class="result-col-middle"> Content 
+                    <div class="book-img">
+                        IMG
+                    </div>
+                    <div class="book-info"> INFO 
+                        <p class="book-title">{{result.title}}</p>
+                        <p>By: {{result.author}}</p>
+                        <p>Year: {{result.year}}</p>
+                        <p>ISBN: {{result.isbn}}</p>
+                    </div>
+                </div>
                 <div class="result-col-right"> Review </div>
             </div>
         </li>
@@ -32,8 +42,4 @@
 {% endblock %}
 
 <!----                <img class="bookcover">
-                    <p>{{result.title}}</p>
-                    <p>By: {{result.author}}</p>
-                    <p>Year: {{result.year}}</p>
-                    <p>ISBN: {{result.isbn}}</p>
             -->
