@@ -20,19 +20,18 @@
         
         <li class="result"> 
             <div class="result-row">
-                <div class="result-col-left"> margin </div>
-                <div class="result-col-middle"> Content 
+                <div class="result-col-left"></div>
+                <div class="result-col-middle"> 
                     <div class="book-img">
-                        IMG
+                        <img class="bookcover">
                     </div>
-                    <div class="book-info"> INFO 
-                        <p class="book-title">{{result.title}}</p>
-                        <p>By: {{result.author}}</p>
-                        <p>Year: {{result.year}}</p>
-                        <p>ISBN: {{result.isbn}}</p>
+                    <div class="book-info">
+                        <p class="book-title"><a href="#">{{result.title}}</a></p>
+                        <p class="book-author">By: <a href="#">{{result.author}}</a></p>
+                        <p class="book-year-isbn">{{result.year}}, ISBN: {{result.isbn}}</p>
                     </div>
                 </div>
-                <div class="result-col-right"> Review </div>
+                <div class="result-col-right"><button type="button" class="btn btn-primary">Reviews</button></div>
             </div>
         </li>
 
@@ -40,6 +39,3 @@
     </ul>
 </div>
 {% endblock %}
-
-<!----                <img class="bookcover">
-            -->
