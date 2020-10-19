@@ -9,7 +9,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1>Search results</h1>
+            <h1 class="search-title">Search results</h1>
         </div>
         <p class="sort">Sort by: Author | Title</p>
     </div>
@@ -26,16 +26,22 @@
                         <img class="bookcover">
                     </div>
                     <div class="book-info">
-                        <p class="book-title"><a href="#">{{result.title}}</a></p>
+                        <p class="book-title"><a href="{{ url_for('book', isbn = '123' ) }}">{{result.title}}</a></p>
                         <p class="book-author">By: <a href="#">{{result.author}}</a></p>
                         <p class="book-year-isbn">{{result.year}}, ISBN: {{result.isbn}}</p>
                     </div>
                 </div>
-                <div class="result-col-right"><button type="button" class="btn btn-primary">Reviews</button></div>
+                <div class="result-col-right">
+                    <div class="review-btn">
+                        <button type="button" class="btn btn-primary">Reviews</button>
+                    </div>
+                </div>
             </div>
         </li>
 
         {% endfor %}
     </ul>
+
+    <a href="#">Back to top</a>
 </div>
 {% endblock %}
