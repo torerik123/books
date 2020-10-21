@@ -50,8 +50,15 @@ fetch('https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-
 });
 
 
+// Get covers for search results
+if (window.location.pathname.match = /results/) {
+  
+  const covers = document.querySelectorAll(".bookcover");
 
-
+  covers.forEach(img => {
+    img.src = "https://images-na.ssl-images-amazon.com/images/I/31TFXgUUVsL._AC_SY355_.jpg";
+  });
+}
 
 
 

@@ -20,7 +20,6 @@ def search():
         return render_template("index.html", allbooks=allbooks)
 
     else:
-
         # Get selected book
         selected = request.form.get("book_list")
 
@@ -29,23 +28,37 @@ def search():
             lookup = Book.query.filter(Book.title.ilike('%' + selected + '%')).all()
             results = []
 
-                # TODO: If more than 1 rows
             for result in lookup:
                 results.append(result)
 
             if len(results) > 1:    
-                return render_template("results.html", results=results)
+                return redirect(url_for('results', search=selected))
             else:
-                title = result.title
-                author = result.author
-                year = result.year
-                isbn = result.isbn
-
+                isbn = results[0].isbn
                 return redirect(url_for('book', isbn=isbn))
-                #return redirect(url_for('book' isbn=isbn))
-
         else:
             return "No matches"
+
+
+@app.route("/results/<search>")
+def results(search):
+
+    if search != "":
+        lookup = Book.query.filter(Book.title.ilike('%' + search + '%')).all()
+        results = []
+
+        for result in lookup:
+            results.append(result)
+
+        if len(results) > 1:    
+            return render_template("results.html", results=results)
+        else:
+            return redirect(url_for('book', isbn=isbn))
+    else:
+        return "No matches"
+    
+    
+
 
 
 @app.route("/book/<int:isbn>")
