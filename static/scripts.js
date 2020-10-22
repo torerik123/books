@@ -28,7 +28,7 @@ fetch('https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-
 
   let img_nr = 0;
 
-  // Book covers
+  // Book covers front page
   bestseller_isbns.forEach(isbn => {
     
     // Get JSON response from Google Books API
@@ -53,21 +53,53 @@ fetch('https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-
 // Get covers for search results
 if (window.location.pathname.match = /results/) {
   
+  let counter = 0;
+  
+  const isbn_list = document.querySelectorAll("#isbn");
+
+
   const covers = document.querySelectorAll(".bookcover");
 
   covers.forEach(img => {
-    img.src = "https://images-na.ssl-images-amazon.com/images/I/31TFXgUUVsL._AC_SY355_.jpg";
+    
+    console.log("ISBN LIST COUNTER:" + isbn_list[counter].innerHTML )
+    // Get JSON response from Google Books API
+    fetch('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn_list[counter].innerHTML)
+    .then(response => response.json())
+    .then(data => {
+
+    // Get thumbnail image
+    const image = data['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
+    
+    // Set cover to image link
+    img.src = image;
+    });
+    counter++;
+    
+    //img.src = "https://images-na.ssl-images-amazon.com/images/I/31TFXgUUVsL._AC_SY355_.jpg";
   });
 }
 
+
 // Get cover on book info page
 document.addEventListener("DOMContentLoaded", () => {
-  
-  const cover = document.querySelector("#cover");
 
   const isbn = document.querySelector("#isbn").innerHTML;
   
-  // TODO: Get book cover from Google Books API
-  cover.src = "https://images-na.ssl-images-amazon.com/images/I/31TFXgUUVsL._AC_SY355_.jpg";
+  const cover = document.querySelector("#cover");
   
+  // Get JSON response from Google Books API
+  fetch('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn)
+  .then(response => response.json())
+  .then(data => {
+
+    // Get thumbnail image
+    const image = data['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
+
+    // Set cover to image link
+    cover.src = image;
+  });
+ 
 });
+
+
