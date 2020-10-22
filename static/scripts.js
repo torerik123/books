@@ -60,5 +60,14 @@ if (window.location.pathname.match = /results/) {
   });
 }
 
+// Get cover on book info page
+document.addEventListener("DOMContentLoaded", () => {
+  
+  const cover = document.querySelector("#cover");
 
-
+  const isbn = document.querySelector("#isbn").innerHTML;
+  
+  // TODO: Get book cover from Google Books API
+  cover.src = "https://images-na.ssl-images-amazon.com/images/I/31TFXgUUVsL._AC_SY355_.jpg";
+  
+});
