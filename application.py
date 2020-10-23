@@ -57,8 +57,20 @@ def results(search):
     else:
         return "No matches"
     
-    
 
+@app.route("/reviews/<int:isbn>")
+def reviews(isbn):
+    """ Call to Goodreads API for reviews"""
+    
+    # Reviews
+    res = requests.get("https://www.goodreads.com/book/isbn/ISBN?format=json", params={"key": "zID72O5cas5E9C4byZW1w", "isbn": isbn })
+
+    if res.status_code != 200:
+        raise Exception("ERROR: API request unsuccesful")
+    
+    data = res.json()
+    
+    return data        
 
 
 @app.route("/book/<int:isbn>")
@@ -83,21 +95,14 @@ def book(isbn):
         year = result.year
         isbn = result.isbn
 
-        return render_template("book.html", title=title, author=author, year=year, isbn=isbn)
+
+        # TODO: Split content and style parts
+        widget = reviews(isbn)
+
+        return render_template("book.html", title=title, author=author, year=year, isbn=isbn, widget=widget)
 
 
-@app.route("/get_book/<int:isbn>")
-def get_book(isbn):
-    """ Call to Goodreads API"""
-    
-    # Reviews
-    res = requests.get("https://www.goodreads.com/book/isbn/ISBN?format=json", params={"key": "zID72O5cas5E9C4byZW1w", "isbn": isbn })
 
-    if res.status_code != 200:
-        raise Exception("ERROR: API request unsuccesful")
-    
-    data = res.json()
-    return str(data)   
 
         
         
