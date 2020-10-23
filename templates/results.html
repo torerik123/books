@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block main %}
-    
+<a name="top"></a>
 <div class="container">
     <div class="row">
         <div class="col">
@@ -28,7 +28,7 @@
                     <div class="book-info">
                         <p class="book-title"><a href="{{ url_for('book', isbn = '123' ) }}">{{result.title}}</a></p>
                         <p class="book-author">By: <a href="#">{{result.author}}</a></p>
-                        <p class="book-year-isbn">{{result.year}}, ISBN: {{result.isbn}}</p>
+                        <p class="book-year-isbn">{{result.year}}, ISBN: <span id="isbn" >{{result.isbn}}</span></p>
                     </div>
                 </div>
                 <div class="result-col-right">
@@ -41,7 +41,32 @@
 
         {% endfor %}
     </ul>
-
-    <a href="#">Back to top</a>
+    <a href="#top">Back to top</a>
 </div>
+
+<script>
+    // Get covers for search results
+    let counter = 0;
+  
+    const isbn_list = document.querySelectorAll("#isbn");
+
+    const covers = document.querySelectorAll(".bookcover");
+
+    covers.forEach(img => {
+  
+    // Get JSON response from Google Books API
+    fetch('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn_list[counter].innerHTML)
+    .then(response => response.json())
+    .then(data => {
+
+        // Get thumbnail image
+        const image = data['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
+    
+        // Set cover to image link
+        img.src = image;
+        });
+    counter++;
+    
+  });
+</script>
 {% endblock %}

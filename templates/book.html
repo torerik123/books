@@ -22,10 +22,32 @@
 
             <h2>Reviews</h2>
             <div>Rating: * * * * * </div>
-            <p>Lorem ipsum dolor sit amet
-                Lorem ipsum dolor sit amet
-                Lorem ipsum dolor sit amet
-                Lorem ipsum dolor sit amet
-            </p>
-    </div>
+            <div id="reviews"></div>
+    
+        </div>
+
+
+<script>
+
+    // Get cover on book info page
+document.addEventListener("DOMContentLoaded", () => {
+
+const isbn = document.querySelector("#isbn").innerHTML;
+
+const cover = document.querySelector("#cover");
+
+// Get JSON response from Google Books API
+fetch('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn)
+.then(response => response.json())
+.then(data => {
+
+  // Get thumbnail image
+  const image = data['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
+
+  // Set cover to image link
+  cover.src = image;
+});
+
+});
+</script>
 {% endblock %}
