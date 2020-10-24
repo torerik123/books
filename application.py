@@ -96,10 +96,18 @@ def book(isbn):
         isbn = result.isbn
 
 
-        # TODO: Split content and style parts
-        widget = reviews(isbn)
+        # Goodreads review widget
+        response = reviews(isbn)
 
-        return render_template("book.html", title=title, author=author, year=year, isbn=isbn, widget=widget)
+        content = str(response['reviews_widget'])
+
+        #CSS
+        style_section = content.split("</style>")[0] + "</style>"
+        
+        # Reviews
+        content_section = content.split("</style>")[1]
+
+        return render_template("book.html", title=title, author=author, year=year, isbn=isbn, content_section=content_section, style_section=style_section)
 
 
 

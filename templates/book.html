@@ -1,10 +1,13 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Book title</title>
+    {{ title }}
 {% endblock %}
 
 {% block main %}
+
+{{ style_section | safe }}
+
     <div class="container">
         <h1>{{ title }}</h1>
         <div><img id="cover"></div>
@@ -24,7 +27,7 @@
             <div>Rating: * * * * * </div>
             <div id="reviews"></div>
 
-            {{ widget | safe }}
+            {{ content_section | safe }}
 
     </div>
 
