@@ -102,7 +102,10 @@ ul {
 .bookcover {
     display:flex;
     align-self: flex-start;
-    background-color:red;
+    background-color:white;
+    background-image: url("book.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
     width:95%;
     height:90%;
     
