@@ -73,7 +73,7 @@ def reviews(isbn):
     return data        
 
 
-@app.route("/book/<int:isbn>")
+@app.route("/book/<string:isbn>")
 def book(isbn):
     """ Lookup book by isbn """ 
          
