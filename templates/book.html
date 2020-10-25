@@ -8,51 +8,57 @@
 
 {{ style_section | safe }}
 
-    <div class="container">
-        <h1>{{ title }}</h1>
-        <div><img id="cover"></div>
-        <h3>Author: {{ author }}, Year: {{ year }}, ISBN: <span id="isbn">{{ isbn }} </span></h3>
-        <p>Lorem ipsum dolor sit amet 
-            Lorem ipsum dolor sit amet 
-            Lorem ipsum dolor sit amet 
-            Lorem ipsum dolor sit amet 
-            Lorem ipsum dolor sit amet 
-            Lorem ipsum dolor sit amet 
-            Lorem ipsum dolor sit amet 
-            Lorem ipsum dolor sit amet 
-            Lorem ipsum dolor sit amet 
-        </p>
-
-            <h2>Reviews</h2>
-            <div>Rating: * * * * * </div>
-            <div id="reviews"></div>
-
-            {{ content_section | safe }}
-
+    <div class="book-container">
+        <div class="book-info-cover">
+            <div class="cover"><img id="cover-img"></div>
+        </div>        
+        <div class="book-info-content">
+            <div class="book-info-col">
+                <h1>{{ title }}, {{ year }}</h1>
+                <div class="author-isbn">Author: <a href="#"><span class="author">{{ author }}</span></a> , <span class="book-isbn">ISBN: {{ isbn }}</span> </div>
+                <div class="rating">Rating: * * * * * </div>
+                <p class="book-info-description">Lorem ipsum dolor sit amet 
+                    Lorem ipsum dolor sit amet 
+                    Lorem ipsum dolor sit amet 
+                    Lorem ipsum dolor sit amet 
+                    Lorem ipsum dolor sit amet 
+                    Lorem ipsum dolor sit amet 
+                    Lorem ipsum dolor sit amet 
+                    Lorem ipsum dolor sit amet 
+                    Lorem ipsum dolor sit amet    
+                </p>
+                
+                <h2>Reviews</h2>
+            
+                {{ content_section | safe }}
+            
+            </div>
+        </div>  
     </div>
 
 
 <script>
-
+    
     // Get cover on book info page
-document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", () => {
 
-const isbn = document.querySelector("#isbn").innerHTML;
+    const isbn = document.querySelector("#isbn").innerHTML;
 
-const cover = document.querySelector("#cover");
+    const cover = document.querySelector("#cover-img");
 
-// Get JSON response from Google Books API
-fetch('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn)
-.then(response => response.json())
-.then(data => {
+    // Get JSON response from Google Books API
+    fetch('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn)
+    .then(response => response.json())
+    .then(data => {
 
-  // Get thumbnail image
-  const image = data['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
+    // Get thumbnail image
+    const image = data['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
 
-  // Set cover to image link
-  cover.src = image;
-});
+    // Set cover to image link
+    cover.src = image;
+    });
 
-});
+    });
+    
 </script>
 {% endblock %}

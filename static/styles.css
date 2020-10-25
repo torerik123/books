@@ -7,16 +7,7 @@
     margin-right:20%;    
 }
 
-/* Navbar */
-
-
 /* Index */
-.cover {
-    height:200px;
-    width:180px;
-    background-color: red;
-}
-
 .slider {
     display:flex;
     justify-content: center;
@@ -134,4 +125,52 @@ ul {
     flex-direction: column;
     justify-content: flex-start;
     padding-top: 20px;
+}
+
+
+/* Book page */
+.book-container {
+    display:flex;
+    margin-top:3%;
+}
+
+.book-info-cover {
+    display: flex;
+    justify-content: center;
+    width: 33%;
+    height:100vh;
+}
+
+.cover {
+    height:313px;
+    width:201px;
+    background-color: red;
+}
+
+.book-info-content {
+    width: 67%;
+    height:100vh;
+}
+
+.book-info-col {
+    display: flex;
+    flex-direction: column;
+    width:90%;
+}
+
+.author-isbn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.book-isbn {
+    font-style: italic;
+}
+.author {
+    text-decoration: underline;
+}
+
+.rating {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
