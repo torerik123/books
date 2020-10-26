@@ -141,10 +141,12 @@ ul {
     height:100vh;
 }
 
-.cover {
+.cover, .cover-img {
     height:313px;
     width:201px;
-    background-color: red;
+    background-image: url("book.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .book-info-content {
@@ -171,6 +173,11 @@ ul {
 }
 
 .rating {
+    font-weight: bold;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.rating > #rating {
+    font-weight: normal;
 }

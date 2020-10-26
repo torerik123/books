@@ -16,17 +16,8 @@
             <div class="book-info-col">
                 <h1>{{ title }}, {{ year }}</h1>
                 <div class="author-isbn">Author: <a href="#"><span class="author">{{ author }}</span></a> , <span class="book-isbn">ISBN: <span id="isbn">{{ isbn }}</span> </span> </div>
-                <div class="rating">Rating: * * * * * </div>
-                <p class="book-info-description">Lorem ipsum dolor sit amet 
-                    Lorem ipsum dolor sit amet 
-                    Lorem ipsum dolor sit amet 
-                    Lorem ipsum dolor sit amet 
-                    Lorem ipsum dolor sit amet 
-                    Lorem ipsum dolor sit amet 
-                    Lorem ipsum dolor sit amet 
-                    Lorem ipsum dolor sit amet 
-                    Lorem ipsum dolor sit amet    
-                </p>
+                <div class="rating">Rating: <span id="rating"></span></div>
+                <p class="book-info-description" id="description"></p>
                 
                 <h2>Reviews</h2>
             
@@ -50,14 +41,23 @@
     fetch('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn)
     .then(response => response.json())
     .then(data => {
+        console.log(data);
+        // Get thumbnail image
+        const image = data['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
+        
+        // Set cover to image link
+        cover.src = image;
+        
+        // Insert description
+        const description = document.querySelector("#description");
+        description.innerHTML = data['items'][0]['volumeInfo']['description']; 
+        
 
-    // Get thumbnail image
-    const image = data['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
-
-    // Set cover to image link
-    cover.src = image;
-    });
-
+        // Rating
+        const rating = document.querySelector("#rating");
+        rating.innerHTML = data['items'][0]['volumeInfo']['averageRating'];
+        
+        });
     });
     
 </script>
