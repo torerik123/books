@@ -24,35 +24,54 @@ def search():
         selected = request.form.get("book_list")
 
         if selected != "":
-            # Lookup in database, ignores case
-            lookup = Book.query.filter(Book.title.ilike('%' + selected + '%')).all()
-            results = []
+        # Lookup in database, ignores case
+            
+            #TODO: Make functions
+            #Title
+            title_lookup = Book.query.filter(Book.title.ilike('%' + selected + '%')).all()
+            title_results = []
 
-            for result in lookup:
-                results.append(result)
+            for result in title_lookup:
+                title_results.append(result)
+            
+            # Author 
+            # TODO: Only get unique results
+            author_lookup = Book.query.filter(Book.author.ilike('%' + selected + '%')).all()
+            author_results = []
 
-            if len(results) > 1:    
-                return redirect(url_for('results', search=selected))
-            else:
-                isbn = results[0].isbn
-                return redirect(url_for('book', isbn=isbn))
+            for result in author_lookup:
+                author_results.append(result)
+
+            # ISBN
+            isbn_lookup = Book.query.filter(Book.isbn.ilike('%' + selected + '%')).all()
+            isbn_results = []
+
+            for result in isbn_lookup:
+                isbn_results.append(result)   
+               
+            return render_template("results.html", title_results=title_results, author_results=author_results, isbn_results=isbn_results)
+
         else:
-            return "No matches"
+            return render_template("results.html")
 
 
 @app.route("/results/<search>")
 def results(search):
 
+    # TODO: Correct title,author, isbn, search
     if search != "":
-        lookup = Book.query.filter(Book.title.ilike('%' + search + '%')).all()
-        results = []
+        
+        #Title
+        title_lookup = Book.query.filter(Book.title.ilike('%' + search + '%')).all()
+        title_results = []
 
-        for result in lookup:
-            results.append(result)
-
-        if len(results) > 1:    
-            return render_template("results.html", results=results)
+        for result in title_lookup:
+            title_results.append(result)
+    
+        if len(title_results) > 1:    
+            return render_template("results.html", title_results=title_results)
         else:
+
             return redirect(url_for('book', isbn=isbn))
     else:
         return "No matches"
