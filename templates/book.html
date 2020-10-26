@@ -10,12 +10,12 @@
 
     <div class="book-container">
         <div class="book-info-cover">
-            <div class="cover"><img id="cover-img"></div>
+            <div class="cover"><img class="cover-img" id="cover-img"></div>
         </div>        
         <div class="book-info-content">
             <div class="book-info-col">
                 <h1>{{ title }}, {{ year }}</h1>
-                <div class="author-isbn">Author: <a href="#"><span class="author">{{ author }}</span></a> , <span class="book-isbn">ISBN: {{ isbn }}</span> </div>
+                <div class="author-isbn">Author: <a href="#"><span class="author">{{ author }}</span></a> , <span class="book-isbn">ISBN: <span id="isbn">{{ isbn }}</span> </span> </div>
                 <div class="rating">Rating: * * * * * </div>
                 <p class="book-info-description">Lorem ipsum dolor sit amet 
                     Lorem ipsum dolor sit amet 

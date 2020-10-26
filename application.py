@@ -35,7 +35,6 @@ def search():
                 title_results.append(result)
             
             # Author 
-            # TODO: Only get unique results
             author_lookup = Book.query.filter(Book.author.ilike('%' + selected + '%')).all()
             author_results = []
 
@@ -51,6 +50,7 @@ def search():
                
             return render_template("results.html", title_results=title_results, author_results=author_results, isbn_results=isbn_results)
 
+        # If no matches
         else:
             return render_template("results.html")
 
@@ -96,15 +96,15 @@ def reviews(isbn):
 def book(isbn):
     """ Lookup book by isbn """ 
          
-    lookup = Book.query.filter(Book.isbn.like('%' + str(isbn) + '%')).all()
-    results = []
+    isbn_lookup = Book.query.filter(Book.isbn.like('%' + str(isbn) + '%')).all()
+    isbn_results = []
 
-    for result in lookup:
-            results.append(result)
+    for result in isbn_lookup:
+            isbn_results.append(result)
 
     # If more than 1 results, return search page
-    if len(lookup) > 1:
-        return render_template("results.html", results=results)
+    if len(isbn_lookup) > 1:
+        return render_template("results.html", isbn_results=isbn_results)
             
     # Show book info
     else: 
@@ -130,7 +130,7 @@ def book(isbn):
 
 
 
-
+# TODO: Lookup book by author for book page
         
         
 
