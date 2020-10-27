@@ -1,5 +1,5 @@
 .main {
-    background-color: ghostwhite;
+    background-color:#FFF;
 }
 
 .bestsellers {
@@ -41,6 +41,13 @@
 }
 
 /* Search results */
+.search-title {
+    letter-spacing: 1mm;
+    padding:20px;
+    color: #000000;
+    text-shadow: 2px 3px 6px rgba(45,45,45,0.8);
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -58,33 +65,43 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(242, 242, 242);
+
   }
 
 .result {
     display:flex;
     flex-direction:row;
     justify-content: flex-start;
-    margin-top: 20px;
-    width:60em;
+    /*margin-top: 20px;*/
+    width:50em;
     height:10em;
+
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(242, 242, 242);
     
-    background-color: #FFF;
+    /*background-color: #FFF;
     border-style: outset;
-    border-width: 2px;;
+    border-width: 2px;;*/
     
 }
 
 /* Container for search results */
 .result-row {
     display:flex;
+    align-items: flex-start;
     width:100%;
-    background: lightgrey;
-    margin: 10px;
+    /*background: lightgrey;
+    margin: 10px;*/
     
 }
 
 .result-col-left {
-    width:250px;
+    width:150px;
     background-color: #FFF;
 }
 
@@ -127,6 +144,16 @@ ul {
     margin-bottom:0;
 }
 
+.book-title > a,
+.book-title > a:hover  {
+    color: #000000;
+    font-weight: bold;
+}
+
+.book-year-isbn {
+    color:darkgrey;
+}
+
 .book-year-isbn, 
 .book-author {
     margin:2px;
@@ -159,6 +186,11 @@ ul {
     background-image: url("book.jpg");
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.book-name {
+    color: #000000;
+    text-shadow: 2px 3px 6px rgba(45,45,45,0.8);
 }
 
 .book-info-content {

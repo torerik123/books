@@ -86,7 +86,6 @@
                                 <p class="book-title"><a href="{{ url_for('book', isbn = result.isbn ) }}">{{result.title}}</a></p>
                                 <p class="book-author">By: <a href="#">{{result.author}}</a></p>
                                 <p class="book-year-isbn">{{result.year}}, ISBN: <span id="isbn" >{{result.isbn}}</span></p>
-                                <p class="book-description" id="book-description">hello</p>
                             </div>    
                     </div>
                     <div class="result-col-right">
@@ -119,8 +118,6 @@
     const isbn_list = document.querySelectorAll("#isbn");
 
     const covers = document.querySelectorAll(".bookcover");
-    
-    const description_list = document.querySelectorAll("#book-description");
 
     covers.forEach(img => {
 
@@ -143,9 +140,6 @@
             else {
             console.log("Book cover not found")
             }
-            
-            // Insert description
-            book_description = data['items'][0]['volumeInfo']['description'];
         }
         
     });
