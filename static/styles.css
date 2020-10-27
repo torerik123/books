@@ -1,3 +1,7 @@
+.main {
+    background-color: ghostwhite;
+}
+
 .bestsellers {
     display:flex;
     justify-content: center;
@@ -60,20 +64,28 @@ ul {
     display:flex;
     flex-direction:row;
     justify-content: flex-start;
-    background-color:cyan;
     margin-top: 20px;
     width:60em;
     height:10em;
+    
+    background-color: #FFF;
+    border-style: outset;
+    border-width: 2px;;
+    
 }
 
 /* Container for search results */
 .result-row {
     display:flex;
-    width:inherit;
+    width:100%;
+    background: lightgrey;
+    margin: 10px;
+    
 }
 
 .result-col-left {
     width:250px;
+    background-color: #FFF;
 }
 
 .result-col-middle {
