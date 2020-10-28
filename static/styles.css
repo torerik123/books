@@ -11,7 +11,38 @@
     margin-right:20%;    
 }
 
+/* Navbar */
+
 /* Index */
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    height:60vh;
+    background-color: #F0F8FF;
+}
+
+/* Search bar */
+.search-box {
+    margin-top:50px;
+    width:500px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+}
+
+.form-group {
+    width:100%;
+    display: flex;
+    flex-direction: row;   
+}
+/* Bestsellers carousel */
 .slider {
     display:flex;
     justify-content: center;
@@ -25,8 +56,10 @@
 }
 
 .index-slider {
+    display:flex;
+    justify-content: center;
     height:50vh;
-    background-color:cyan;
+    width:100%;
 }
 
 .footer {
@@ -257,7 +290,3 @@ ul {
     
 }
 
-
-.review-content {
-    
-}
