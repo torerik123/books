@@ -76,7 +76,6 @@ ul {
     display:flex;
     flex-direction:row;
     justify-content: flex-start;
-    /*margin-top: 20px;*/
     width:50em;
     height:10em;
 
@@ -84,9 +83,6 @@ ul {
     border-bottom-style: solid;
     border-bottom-color: rgb(242, 242, 242);
     
-    /*background-color: #FFF;
-    border-style: outset;
-    border-width: 2px;;*/
     
 }
 
@@ -95,9 +91,6 @@ ul {
     display:flex;
     align-items: flex-start;
     width:100%;
-    /*background: lightgrey;
-    margin: 10px;*/
-    
 }
 
 .result-col-left {
@@ -180,12 +173,34 @@ ul {
     height:100vh;
 }
 
-.cover, .cover-img {
+.book-info-description {
+    padding-bottom:20px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(242, 242, 242);
+}
+
+/* Container */
+.cover {
+    display:flex;
+    justify-content: center;
+    height:100vh;
+    width:400px;
+    border-right-width: 2px;
+    border-right-style: solid;
+    border-right-color: rgb(242, 242, 242);
+}
+
+.cover-img {
+    margin-top:20px;
     height:313px;
     width:201px;
     background-image: url("book.jpg");
     background-size: contain;
     background-repeat: no-repeat;
+    border-style:none;
+    border-width:20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .book-name {
@@ -207,6 +222,11 @@ ul {
 .author-isbn {
     margin-top: 10px;
     margin-bottom: 10px;
+    padding-bottom:10px;
+
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(242, 242, 242);
 }
 
 .book-isbn {
@@ -224,4 +244,20 @@ ul {
 
 .rating > #rating {
     font-weight: normal;
+}
+
+/* Reviews */
+.review-container {
+    height:10px;
+    background-color: grey;
+    border-style: solid;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(242, 242, 242);
+    
+}
+
+
+.review-content {
+    
 }
