@@ -11,13 +11,12 @@ app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
 
-
 @app.route("/", methods=["GET", "POST"])
 def search():
 
     if request.method == "GET":
         allbooks = Book.query.all()
-        return render_template("index.html", allbooks=allbooks)
+        return render_template("index.html", allbooks=allbooks, navbar=False)
 
     else:
         # Get selected book
@@ -48,11 +47,11 @@ def search():
             for result in isbn_lookup:
                 isbn_results.append(result)   
                
-            return render_template("results.html", title_results=title_results, author_results=author_results, isbn_results=isbn_results)
+            return render_template("results.html", navbar=True, title_results=title_results, author_results=author_results, isbn_results=isbn_results)
 
         # If no matches
         else:
-            return render_template("results.html")
+            return render_template("results.html", navbar = True)
 
 
 @app.route("/results/<search>")
@@ -69,7 +68,7 @@ def results(search):
             title_results.append(result)
     
         if len(title_results) > 1:    
-            return render_template("results.html", title_results=title_results)
+            return render_template("results.html", navbar = True, title_results=title_results)
         else:
 
             return redirect(url_for('book', isbn=isbn))
@@ -104,7 +103,7 @@ def book(isbn):
 
     # If more than 1 results, return search page
     if len(isbn_lookup) > 1:
-        return render_template("results.html", isbn_results=isbn_results)
+        return render_template("results.html", navbar = True, isbn_results=isbn_results)
             
     # Show book info
     else: 
@@ -125,7 +124,7 @@ def book(isbn):
         # Reviews
         content_section = content.split("</style>")[1]
 
-        return render_template("book.html", title=title, author=author, year=year, isbn=isbn, content_section=content_section, style_section=style_section)
+        return render_template("book.html",navbar = True, title=title, author=author, year=year, isbn=isbn, content_section=content_section, style_section=style_section)
 
 
 

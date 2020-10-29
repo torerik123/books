@@ -2,15 +2,6 @@
     background-color:#FFF;
 }
 
-.bestsellers {
-    display:flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    margin-left:20%;
-    margin-right:20%;    
-}
-
 /* Navbar */
 
 /* Index */
@@ -19,14 +10,28 @@
     flex-direction: column;
     justify-content: center;
     align-items:center;
-    height:60vh;
+    height:100vh;
     background-color: #F0F8FF;
+    background-image: url("shelf.jpg");
+}
+
+.content-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width:50%;
+}
+
+.intro-text {
+    color:#FFF;
+    background-color: lightslategrey;
+    padding:40px;
 }
 
 /* Search bar */
 .search-box {
     margin-top:50px;
-    width:500px;
+    width:100%;
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -42,6 +47,7 @@
     display: flex;
     flex-direction: row;   
 }
+
 /* Bestsellers carousel */
 .slider {
     display:flex;
@@ -49,16 +55,10 @@
     flex-direction: column;
 }
 
-.slider-image {
-    width:150px;
-    height:180px;
-    background-color: green;
-}
-
 .index-slider {
     display:flex;
     justify-content: center;
-    height:50vh;
+    height:10%;
     width:100%;
 }
 
