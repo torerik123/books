@@ -5,17 +5,19 @@ Book review
 {% endblock %}
 
 {% block main %}
+<div class="hero">
+  <h1 class="hero-text">ISITANYGOOD?</h1>  
+  <h4 class="intro-text">Find book reviews by title, author or ISBN number</h4>
+</div>
 
-<div class="content">
-
+<div class="content">  
   
   <div class="content-2">
-    <h4 class="intro-text">Find book reviews by title, author or ISBN number</h4>  
     <!--Search-->
     <div class="search-box">
       <form action="{{ url_for('search') }}" class="search-bar" method="post" class="form-inline">
         <div class="form-group">
-          <input class="form-control mr-sm-2" type="search" list="book" id="allbooks" placeholder="Title, Author, ISBN" name="book_list" aria-label="Search" />
+          <input class="form-control mr-sm-2" type="search" list="book" id="allbooks" placeholder="Title / Author / ISBN" name="book_list" aria-label="Search" />
           <datalist id="book">
           {% for book in allbooks %}
           <option id="{{ book.id }}" value="{{ book.title }}" name="book_name">
@@ -25,6 +27,12 @@ Book review
         </div>
       </form>
     </div>
+
+    <!--Bestsellers-->
+    <div>
+
+    </div>
+  
   </div>
 </div>  
 
