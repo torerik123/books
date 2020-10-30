@@ -20,14 +20,22 @@
     justify-content: center;
 }
 
-.content {
+.content-search {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items:center;
-    height:100vh;
-    background-color: #F0F8FF;
+    height:40vh;
     background-image: url("shelf.jpg");
+}
+
+.content-search-2 {
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    background-color: lightblue;
 }
 
 .content-2 {
@@ -45,7 +53,7 @@
 
 /* Search bar */
 .search-box {
-    margin-top:50px;
+    margin-top:60px;
     width:100%;
     display:flex;
     flex-direction: column;
@@ -305,3 +313,32 @@ ul {
     
 }
 
+
+/* Cards */
+.card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    width:40%;
+    background-color: yellowgreen;
+}
+
+.header {
+    padding:10px;
+    display:flex;
+    justify-content: center;
+    color:white;
+    background-color: teal;
+}
+.card-row {
+    padding:25px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.card {
+    height:133px;
+    width:100px;
+    background-color: yellow;
+}
