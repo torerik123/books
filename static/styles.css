@@ -337,8 +337,6 @@ ul {
     justify-content: space-around;
 }
 
-.card {
-    height:133px;
-    width:100px;
-    background-color: yellow;
-}
+img {
+    clip-path:inset(1%);
+  }
