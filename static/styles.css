@@ -131,17 +131,6 @@
     border-right-color: rgb(242, 242, 242);
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-
-    border-width: 2px;
-    border-style: solid;
-    border-color: rgb(242, 242, 242);
-
-  }
-
 .result {
     display:flex;
     flex-direction:row;
@@ -149,10 +138,10 @@ ul {
     width:50em;
     height:10em;
 
-    border-bottom-width: 2px;
+    /* border-bottom-width: 2px;
     border-bottom-style: solid;
     border-bottom-color: rgb(242, 242, 242);
-    
+   */ 
     
 }
 
@@ -250,15 +239,16 @@ ul {
     border-bottom-color: rgb(242, 242, 242);
 }
 
+.author-isbn {
+    margin-bottom: 20px;
+}
+
 /* Container */
 .cover {
     display:flex;
     justify-content: center;
     height:100vh;
     width:400px;
-    border-right-width: 2px;
-    border-right-style: solid;
-    border-right-color: rgb(242, 242, 242);
 }
 
 .cover-img {
@@ -289,15 +279,7 @@ ul {
     width:90%;
 }
 
-.author-isbn {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-bottom:10px;
 
-    border-bottom-width: 2px;
-    border-bottom-style: solid;
-    border-bottom-color: rgb(242, 242, 242);
-}
 
 .book-isbn {
     font-style: italic;
@@ -327,5 +309,8 @@ ul {
     
 }
 
-
+.footer {
+    height:50vh;
+    background-image: url("shelf.jpg");
+}
 /**/
