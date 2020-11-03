@@ -46,14 +46,16 @@ Book review
         <div class="card w-50" style="width: 18rem;">
           <img class="card-img-top" id="coverimg0" src="/static/book.jpg" alt="Card image cap">
           <div class="card-body">
-            <p class="card-text">Title <br> Author</p>
+            <h5 class="card-title"><span id="title0">Title</span></h5>
+            <p class="card-text"><span id="author0">Author</span></p>
           </div>
         </div>
 
         <div class="card w-50" style="width: 18rem;">
           <img class="card-img-top" id="coverimg1" src="/static/book.jpg" alt="Card image cap">
           <div class="card-body">
-            <p class="card-text">Title <br> Author</p>
+            <h5 class="card-title"><span id="title1">Title</span></h5>
+            <p class="card-text"><span id="author1">Author</span></p>
           </div>
         </div>
       </div>
@@ -62,14 +64,16 @@ Book review
         <div class="card w-50" style="width: 18rem;">
           <img class="card-img-top" id="coverimg2" src="/static/book.jpg" alt="Card image cap">
           <div class="card-body">
-            <p class="card-text">Title <br> Author</p>
+            <h5 class="card-title"><span id="title2">Title</span></h5>
+            <p class="card-text"><span id="author2">Author</span></p>
           </div>
         </div>
 
         <div class="card w-50" style="width: 18rem;">
           <img class="card-img-top" id="coverimg3" src="/static/book.jpg" alt="Card image cap">
           <div class="card-body">
-            <p class="card-text">Title <br> Author</p>
+            <h5 class="card-title"><span id="title3">Title</span></h5>
+            <p class="card-text"><span id="author3">Author</span></p>
           </div>
         </div>
       </div>
@@ -78,32 +82,24 @@ Book review
         <div class="card w-50" style="width: 18rem;">
           <img class="card-img-top" id="coverimg4" src="/static/book.jpg" alt="Card image cap">
           <div class="card-body">
-            <p class="card-text">Title <br> Author</p>
+            <h5 class="card-title"><span id="title4">Title</span></h5>
+            <p class="card-text"><span id="author4">Author</span></p>
           </div>
         </div>
         
         <div class="card w-50" style="width: 18rem;">
           <img class="card-img-top" id="coverimg5" src="/static/book.jpg" alt="Card image cap">
           <div class="card-body">
-            <p class="card-text">Title <br> Author</p>
+            <h5 class="card-title"><span id="title5">Title</span></h5>
+            <p class="card-text"><span id="author5">Author</span></p>
           </div>
         </div>
-    </div>
-            
-  <!--End card body-->  
+    </div>  
   </div>
-
-<!--End container-->
 </div>
 
 <!--Footer-->
-<div class="content-search">  
-  
-</div> 
-
-
-
-
+<div class="content-search"></div> 
 
 <script>
 const bestseller_isbns = [];
@@ -134,7 +130,7 @@ fetch('https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-
 
   let img_nr = 0;
 
-  // Book covers front page
+  // Book covers, title and description front page
   bestseller_isbns.forEach(isbn => {
     
     // Get JSON response from Google Books API
@@ -142,14 +138,53 @@ fetch('https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-
     .then(response => response.json())
     .then(data => {
       
-      // Get thumbnail image
+      console.log(data['items'][0]['volumeInfo']['title'])
+      
+      // Thumbnail image and authors
       const image = data['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
-
-      // Get ID of slider element
+      const authors = data['items'][0]['volumeInfo']['authors'];
+      const book_title = data['items'][0]['volumeInfo']['title']
+      
+      // Get ID of img, title and author
       const carousel = document.querySelector("#coverimg" + img_nr);
-
+      const title = document.querySelector("#title" + img_nr);
+      const author = document.querySelector("#author" + img_nr);
+      
       // Set source to image link
-      carousel.src = image;  
+      carousel.src = image;
+
+      // Insert title
+      title.innerHTML = book_title;
+
+      // Update authors      
+      if (authors.length == 1) {
+        authors.forEach(element => {
+          author.innerHTML = element;
+        });
+      }
+
+      // If more than 1 author
+      else {
+        let fulltext = "";
+        const last = authors[authors.length -1];
+        
+        authors.forEach(element => {
+          
+          // If last author name, don't add comma
+          if (element === last) {
+            fulltext += element;
+          }
+
+          // Author name + comma  
+          else {
+            fulltext += element + (', ');
+          }
+        });
+
+        // Insert authors
+        author.innerHTML = fulltext;
+
+      }  
       img_nr++;
       });
   });
