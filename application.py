@@ -54,27 +54,33 @@ def search():
             return render_template("results.html", navbar = True)
 
 
-@app.route("/results/<search>")
+@app.route("/results/<string:search>")
 def results(search):
 
     # TODO: Correct title,author, isbn, search
-    if search != "":
-        
-        #Title
+    #Title
         title_lookup = Book.query.filter(Book.title.ilike('%' + search + '%')).all()
         title_results = []
 
         for result in title_lookup:
             title_results.append(result)
     
-        if len(title_results) > 1:    
-            return render_template("results.html", navbar = True, title_results=title_results)
-        else:
+        # Author 
+        author_lookup = Book.query.filter(Book.author.ilike('%' + search + '%')).all()
+        author_results = []
 
-            return redirect(url_for('book', isbn=isbn))
-    else:
-        return "No matches"
+        for result in author_lookup:
+            author_results.append(result)
 
+       # ISBN
+        isbn_lookup = Book.query.filter(Book.isbn.ilike('%' + search + '%')).all()
+        isbn_results = []
+
+        for result in isbn_lookup:
+            isbn_results.append(result)   
+               
+        return render_template("results.html", navbar=True, title_results=title_results, author_results=author_results, isbn_results=isbn_results)
+        
 
 @app.route("/reviews/<int:isbn>")
 def reviews(isbn):
