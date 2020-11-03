@@ -6,7 +6,7 @@
 
 {% block main %}
 <a name="top"></a>
-<div class="container">
+<div class="search-container">
     <div class="row">
         <div class="col">
             <h1 class="search-title">Search results</h1>
@@ -28,7 +28,7 @@
                         </div>
                         <div class="book-info">
                             <p class="book-title"><a href="{{ url_for('book', isbn = result.isbn ) }}">{{result.title}}</a></p>
-                            <p class="book-author">By: <a href="#">{{result.author}}</a></p>
+                            <p class="book-author">By: <a href="{{ url_for('results', search = result.author ) }}">{{result.author}}</a></p>
                             <p class="book-year-isbn">{{result.year}}, ISBN: <span id="isbn" >{{result.isbn}}</span></p>
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                         </div>
                         <div class="book-info">
                             <p class="book-title"><a href="{{ url_for('book', isbn = result.isbn ) }}">{{result.title}}</a></p>
-                            <p class="book-author">By: <a href="#">{{result.author}}</a></p>
+                            <p class="book-author">By: <a href="{{ url_for('results', search = result.author ) }}">{{result.author}}</a></p>
                             <p class="book-year-isbn">{{result.year}}, ISBN: <span id="isbn" >{{result.isbn}}</span></p>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                             </div>
                             <div class="book-info">
                                 <p class="book-title"><a href="{{ url_for('book', isbn = result.isbn ) }}">{{result.title}}</a></p>
-                                <p class="book-author">By: <a href="#">{{result.author}}</a></p>
+                                <p class="book-author">By: <a href="{{ url_for('results', search = result.author ) }}">{{result.author}}</a></p>
                                 <p class="book-year-isbn">{{result.year}}, ISBN: <span id="isbn" >{{result.isbn}}</span></p>
                             </div>    
                     </div>

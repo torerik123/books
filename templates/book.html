@@ -12,21 +12,19 @@
         <div class="book-info-cover">
             <div class="cover">
                 <img class="cover-img" id="cover-img"></div>
-            </div>        
+            </div>
+
         <div class="book-info-content">
             <div class="book-info-col">
                 <h1 class="book-name">{{ title }}, {{ year }}</h1>
-                <div class="author-isbn">Author: <a href="#"><span class="author">{{ author }}</span></a> , <span class="book-isbn">ISBN: <span id="isbn">{{ isbn }}</span> </span> </div>
+                <div class="author-isbn">Author: <a href="{{ url_for('results', search = author ) }}"><span class="author">{{ author }}</span></a> , <span class="book-isbn">ISBN: <span id="isbn">{{ isbn }}</span> </span> </div>
                 <div class="rating">Rating: <span id="rating"></span></div>
                 <p class="book-info-description" id="description"></p>
                 
                 <div class="review-content">
                     {{ content_section | safe }} 
                </div>
-                        
-                
                     
-            
             </div>
         </div>  
     </div>
