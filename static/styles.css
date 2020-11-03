@@ -5,15 +5,15 @@
 /* Navbar */
 
 /* Index */
-@import url('https://fonts.googleapis.com/css?family=Red+Hat+Display:900&display=swap');
+.hero > .jumbotron {
+    margin:0;
+    height:inherit;
+}
 
-.hero {
-    height:60vh;
-    width:100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #FFDEAD;
+/* Index - bestsellers */
+.bestseller-container > .row {
+    border-style: solid;
+    
 }
 
 .hero-text {
@@ -29,7 +29,6 @@
     justify-content: center;
     font-size: 86px;
     font-family: 'Trebuchet MS', Helvetica, sans-serif;
-    
 }
 
 
@@ -119,7 +118,7 @@
     text-shadow: 2px 3px 6px rgba(45,45,45,0.8);
 }
 
-.container {
+.search-container {
     display: flex;
     flex-direction: column;
     align-items:center;
@@ -326,36 +325,6 @@ ul {
     border-style: solid;
     border-color: rgb(242, 242, 242);
     
-}
-
-
-/* Cards */
-.card-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-self: center;
-    width:40%;
-    background-color: yellowgreen;
-}
-
-.header {
-    padding:10px;
-    display:flex;
-    justify-content: center;
-    color:white;
-    background-color: teal;
-}
-.card-row {
-    padding:25px;
-    display: flex;
-    justify-content: space-around;
-}
-
-.card {
-    -webkit-box-shadow: -18px 9px 28px -16px rgba(0,0,0,0.75);
-    -moz-box-shadow: -18px 9px 28px -16px rgba(0,0,0,0.75);
-    box-shadow: -18px 9px 28px -16px rgba(0,0,0,0.75);
 }
 
 

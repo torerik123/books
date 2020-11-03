@@ -5,17 +5,19 @@ Book review
 {% endblock %}
 
 {% block main %}
-
-
+<!--Hero module-->
 <div class="hero">
-  <div class = "book"></div>
-  <h1 class="hero-text">Is it any good?</h1>  
-  <h4 class="intro-text">Find book reviews by title, author or ISBN number</h4>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Is it any good?</h1>
+      <p class="lead">Find book reviews by title, author or ISBN number</p>
+    </div>
+  </div>
 </div>
 
+<!--Search-->
 <div class="content-search">  
   <div class="content-2">
-    <!--Search-->
     <div class="search-box">
       <form action="{{ url_for('search') }}" class="search-bar" method="post" class="form-inline">
         <div class="form-group">
@@ -34,27 +36,72 @@ Book review
   </div>
 </div>
 
-<div class="content-search-2">
-  <!--Bestsellers-->
-  
-  <div class="card-container">
-    <h1 class="header">Best sellers</h1>
-    <div class="card-row">
-      <div class="card"><img id="coverimg0"></div>
-      <div class="card"><img id="coverimg1"></div>
-      <div class="card"><img id="coverimg2"></div>
+<!--Bestsellers-->
+<div class="card">
+  <h5 class="card-header text-center">Best sellers</h5>
+  <div class="card-body">
+    <div class="row flex-row justify-content-center">
+      <!--Cards-->
+      <div class="col h-30">
+        <div class="card w-50" style="width: 18rem;">
+          <img class="card-img-top" id="coverimg0" src="/static/book.jpg" alt="Card image cap">
+          <div class="card-body">
+            <p class="card-text">Title <br> Author</p>
+          </div>
+        </div>
+
+        <div class="card w-50" style="width: 18rem;">
+          <img class="card-img-top" id="coverimg1" src="/static/book.jpg" alt="Card image cap">
+          <div class="card-body">
+            <p class="card-text">Title <br> Author</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col h-30">
+        <div class="card w-50" style="width: 18rem;">
+          <img class="card-img-top" id="coverimg2" src="/static/book.jpg" alt="Card image cap">
+          <div class="card-body">
+            <p class="card-text">Title <br> Author</p>
+          </div>
+        </div>
+
+        <div class="card w-50" style="width: 18rem;">
+          <img class="card-img-top" id="coverimg3" src="/static/book.jpg" alt="Card image cap">
+          <div class="card-body">
+            <p class="card-text">Title <br> Author</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col h-30">
+        <div class="card w-50" style="width: 18rem;">
+          <img class="card-img-top" id="coverimg4" src="/static/book.jpg" alt="Card image cap">
+          <div class="card-body">
+            <p class="card-text">Title <br> Author</p>
+          </div>
+        </div>
+        
+        <div class="card w-50" style="width: 18rem;">
+          <img class="card-img-top" id="coverimg5" src="/static/book.jpg" alt="Card image cap">
+          <div class="card-body">
+            <p class="card-text">Title <br> Author</p>
+          </div>
+        </div>
     </div>
-    
-    <div class="card-row">
-      <div class="card"><img id="coverimg3"></div>
-      <div class="card"><img id="coverimg4"></div>
-      <div class="card"><img id="coverimg5"></div>
-    </div> 
+            
+  <!--End card body-->  
   </div>
 
-
-  
+<!--End container-->
 </div>
+
+<!--Footer-->
+<div class="content-search">  
+  
+</div> 
+
+
 
 
 
