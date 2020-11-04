@@ -11,9 +11,26 @@
 }
 
 /* Index - bestsellers */
-.bestseller-container > .row {
-    border-style: solid;
-    
+#bestseller-imgs {
+    display: flex;
+    justify-content: center;
+}
+
+.card-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#book-card {
+    margin:20px;
+}
+
+
+
+#deck2
+{
+    margin-top:20px;
 }
 
 .hero-text {
