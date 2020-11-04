@@ -26,8 +26,6 @@
     margin:20px;
 }
 
-
-
 #deck2
 {
     margin-top:20px;
@@ -101,6 +99,11 @@
     display: flex;
     flex-direction: row;   
 }
+
+/* Remove arrow from datalist */
+input::-webkit-calendar-picker-indicator {
+    display: none;
+  }
 
 /* Bestsellers carousel */
 .slider {
