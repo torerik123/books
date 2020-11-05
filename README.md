@@ -1,5 +1,3 @@
-"# books" 
-
 # Find book reviews by title, author or ISBN number
 
 # APIS used
@@ -39,7 +37,7 @@ Using Javascript, the ISBN numbers of the best selling books are fetched from th
 
 ### Search
 When typing in text in the search bar the user will see suggestions as they are typing.
-The database contains only contains 5000 books, so not all books will be available in a search. 
+The database only contains 5000 books, so not all books will be available in a search. 
 I could have only used Goodreads API or Google books for the search function and have more books available,
 but I wanted to get more experience with Postgres and SQLalchemy.
 
