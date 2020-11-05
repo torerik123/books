@@ -47,7 +47,7 @@ def search():
             for result in isbn_lookup:
                 isbn_results.append(result)   
                
-            return render_template("results.html", navbar=True, title_results=title_results, author_results=author_results, isbn_results=isbn_results)
+            return render_template("results.html", navbar=True, title_results=title_results, author_results=author_results, isbn_results=isbn_results, search=selected)
 
         # If no matches
         else:
@@ -57,7 +57,7 @@ def search():
 @app.route("/results/<string:search>")
 def results(search):
 
-    # TODO: Correct title,author, isbn, search
+    # TODO: DRY
     #Title
         title_lookup = Book.query.filter(Book.title.ilike('%' + search + '%')).all()
         title_results = []
@@ -79,16 +79,16 @@ def results(search):
         for result in isbn_lookup:
             isbn_results.append(result)   
                
-        return render_template("results.html", navbar=True, title_results=title_results, author_results=author_results, isbn_results=isbn_results)
+        return render_template("results.html", navbar=True, title_results=title_results, author_results=author_results, isbn_results=isbn_results, search=search)
         
 
-@app.route("/reviews/<int:isbn>")
+@app.route("/reviews/<string:isbn>")
 def reviews(isbn):
     """ Call to Goodreads API for reviews"""
     
     # Reviews
-    res = requests.get("https://www.goodreads.com/book/isbn/ISBN?format=json", params={"key": "zID72O5cas5E9C4byZW1w", "isbn": isbn })
-
+    res = requests.get(f"https://www.goodreads.com/book/isbn/{isbn}?format=json&user_id=122566280") 
+    
     if res.status_code != 200:
         raise Exception("ERROR: API request unsuccesful")
     
