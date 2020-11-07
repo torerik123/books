@@ -119,45 +119,4 @@
    
 </div>
 
-      
-        
-    
-
-<script>
-    // Get covers for search results
-    let counter = 0;
-  
-    const isbn_list = document.querySelectorAll("#isbn");
-
-    const covers = document.querySelectorAll(".bookcover");
-
-    covers.forEach(img => {
-
-    // Get JSON response from Google Books API
-    fetch('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn_list[counter].innerHTML)
-    .then(response => response.json())
-    .then(data => {
-        
-        if (data['items'] !== undefined) {
-            
-            if (data['items'][0]['volumeInfo']['imageLinks'] !== undefined) {
-            
-                // Get thumbnail image
-                const image = data['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
-            
-                // Set cover to image link
-                img.src = image;
-            } 
-            
-            else {
-            console.log("Book cover not found")
-            }
-        }
-        
-    });
-    counter++;
-    
-});
-
-</script>
 {% endblock %}

@@ -48,39 +48,4 @@
             </div>
         </div>  
     </div>
-
-
-<script>
-    
-    // Get cover on book info page
-    document.addEventListener("DOMContentLoaded", () => {
-
-    const isbn = document.querySelector("#isbn").innerHTML;
-
-    const cover = document.querySelector("#cover-img");
-
-    // Get JSON response from Google Books API
-    fetch('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        // Get thumbnail image
-        const image = data['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
-        
-        // Set cover to image link
-        cover.src = image;
-        
-        // Insert description
-        const description = document.querySelector("#description");
-        description.innerHTML = data['items'][0]['volumeInfo']['description']; 
-        
-
-        // Rating
-        const rating = document.querySelector("#rating");
-        rating.innerHTML = data['items'][0]['volumeInfo']['averageRating'] + "/5";
-        
-        });
-    });
-    
-</script>
 {% endblock %}
