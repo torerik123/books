@@ -23,20 +23,15 @@ def search():
         selected = request.form.get("book_list")
 
         if selected != "":
-        # Lookup in database, ignores case
-            
             return redirect(url_for('results', search = selected))   
-            #return render_template("results.html", navbar=True, title_results=title_results, author_results=author_results, isbn_results=isbn_results, search=selected)
-
+            
         # If no matches
         else:
-            #return render_template("results.html", navbar = True)
             return redirect(url_for('results', search = selected))
 
 @app.route("/results/<string:search>")
 def results(search):
 
-    # TODO: DRY
     #Title
         title_lookup = Book.query.filter(Book.title.ilike('%' + search + '%')).all()
         title_results = []
@@ -111,11 +106,6 @@ def book(isbn):
 
         return render_template("book.html",navbar = True, title=title, author=author, year=year, isbn=isbn, content_section=content_section, style_section=style_section)
 
-
-
-# TODO: Lookup book by author for book page
-        
-        
 
      
         
