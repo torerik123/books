@@ -2,7 +2,7 @@
 
 # Demo
 
-[Demo](https://tor-books.herokuapp.com/)
+[View demo](https://tor-books.herokuapp.com/)
 
 # APIS used
 
