@@ -25,34 +25,13 @@ def search():
         if selected != "":
         # Lookup in database, ignores case
             
-            #TODO: Make functions
-            #Title
-            title_lookup = Book.query.filter(Book.title.ilike('%' + selected + '%')).all()
-            title_results = []
-
-            for result in title_lookup:
-                title_results.append(result)
-            
-            # Author 
-            author_lookup = Book.query.filter(Book.author.ilike('%' + selected + '%')).all()
-            author_results = []
-
-            for result in author_lookup:
-                author_results.append(result)
-
-            # ISBN
-            isbn_lookup = Book.query.filter(Book.isbn.ilike('%' + selected + '%')).all()
-            isbn_results = []
-
-            for result in isbn_lookup:
-                isbn_results.append(result)   
-               
-            return render_template("results.html", navbar=True, title_results=title_results, author_results=author_results, isbn_results=isbn_results, search=selected)
+            return redirect(url_for('results', search = selected))   
+            #return render_template("results.html", navbar=True, title_results=title_results, author_results=author_results, isbn_results=isbn_results, search=selected)
 
         # If no matches
         else:
-            return render_template("results.html", navbar = True)
-
+            #return render_template("results.html", navbar = True)
+            return redirect(url_for('results', search = selected))
 
 @app.route("/results/<string:search>")
 def results(search):
