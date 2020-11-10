@@ -38,8 +38,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
             fetch('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn)
             .then(response => response.json())
             .then(data => {
-            
-                console.log(data['items'][0]['volumeInfo']['title'])
                 
                 // Thumbnail image and authors
                 const image = data['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
