@@ -18,7 +18,7 @@
 {% if title_results or author_results or isbn_results %}
 
     {% if title_results %}
-    <div class="card" style="width:66%">
+    <div class="card">
  
         <ul class="list-group list-group-flush" >    
             {% for result in title_results %}
@@ -49,7 +49,7 @@
 
 
     {% if author_results %}
-    <div class="card" style="width:66%">
+    <div class="card">
  
         <ul class="list-group list-group-flush" >    
             {% for result in author_results %}
@@ -80,7 +80,7 @@
 
 
     {% if isbn_results %}
-    <div class="card" style="width:66%">
+    <div class="card">
  
         <ul class="list-group list-group-flush" >    
             {% for result in isbn_results %}

@@ -6,97 +6,94 @@ Book review
 
 {% block main %}
 <!--Hero module-->
-<div class="hero">
-  <div class="jumbotron jumbotron-fluid">
-    <div class="container text-center">
-      
-      <div class="animate__animated animate__backInLeft">
-        <h1 class="display-4">Is it any good?</h1>
-        <p class="lead">Find book reviews by title, author or ISBN number</p>
-      </div>
-      
+<div class="jumbotron jumbotron-fluid mb-0">
+  <div class="container text-center">
+    <div class="animate__animated animate__backInLeft">
+      <h1 class="display-4">Is it any good?</h1>
+      <p class="lead">Find book reviews by title, author or ISBN number</p>
     </div>
   </div>
 </div>
 
-
-
-<!--Bestsellers-->
-<div class="card">
-  <h5 class="card-header text-center">Best sellers</h5>
-  <div class="card-body" id="bestseller-imgs">
-    <div class="card-row">
-      <div class="card w-75" id="book-card">
-        <img class="card-img-top" id="coverimg0" src="/static/book.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title"><span id="title0">Title</span></h5>
-          <p class="card-text"><span id="author0">Author</span></p>
-        </div>
-      </div>
-
-      <div class="card w-75" id="book-card">
-        <img class="card-img-top" id="coverimg1" src="/static/book.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title"><span id="title1">Title</span></h5>
-          <p class="card-text"><span id="author1">Author</span></p>
-        </div>
-      </div>
-
-      <div class="card w-75" id="book-card">
-        <img class="card-img-top" id="coverimg2" src="/static/book.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title"><span id="title2">Title</span></h5>
-          <p class="card-text"><span id="author2">Author</span></p>
-        </div>
-      </div>
-      
-      <div class="card w-75" id="book-card">
-        <img class="card-img-top" id="coverimg3" src="/static/book.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title"><span id="title3">Title</span></h5>
-          <p class="card-text"><span id="author3">Author</span></p>
-        </div>
-      </div>
-
-      
-      <div class="card w-75" id="book-card">
-        <img class="card-img-top" id="coverimg4" src="/static/book.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title"><span id="title4">Title</span></h5>
-          <p class="card-text"><span id="author4">Author</span></p>
-        </div>
-      </div>
+<div class="main-content">
+  <!--Search-->
+  <div class="content-search">  
+    <div class="content-2">
+      <div class="search-box">
+        <form action="{{ url_for('search') }}" class="search-bar" method="post" class="form-inline">
+          <div class="form-group">
+            <input class="form-control mr-sm-2" type="search" list="book" id="allbooks" placeholder="Title / Author / ISBN" name="book_list" aria-label="Search" />
+            <datalist id="book">
             
-      <div class="card w-75" id="book-card">
-        <img class="card-img-top" id="coverimg5" src="/static/book.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title"><span id="title5">Title</span></h5>
-          <p class="card-text"><span id="author5">Author</span></p>
-        </div>
+            {% for book in allbooks %}
+              <option id="{{ book.id }}" value="{{ book.title }}" name="book_name">
+            {% endfor %}
+            
+            </datalist>
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+          </div>
+        </form>
       </div>
-    </div>
-</div>
-
-<!--Search-->
-<div class="content-search">  
-  <div class="content-2">
-    <div class="search-box">
-      <form action="{{ url_for('search') }}" class="search-bar" method="post" class="form-inline">
-        <div class="form-group">
-          <input class="form-control mr-sm-2" type="search" list="book" id="allbooks" placeholder="Title / Author / ISBN" name="book_list" aria-label="Search" />
-          <datalist id="book">
-          
-          {% for book in allbooks %}
-            <option id="{{ book.id }}" value="{{ book.title }}" name="book_name">
-          {% endfor %}
-          
-          </datalist>
-          <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-        </div>
-      </form>
-    </div>
   </div>
 </div>
+
+<div class="container-fluid">
+  <div class="card">
+    <h5 class="card-header text-center">Best sellers</h5>
+    <div class="card-body" id="bestseller-imgs">
+      <div class="card-row">
+        <div class="card w-75" id="book-card">
+          <img class="card-img-top" id="coverimg0" src="/static/book.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><span id="title0">Title</span></h5>
+            <p class="card-text"><span id="author0">Author</span></p>
+          </div>
+        </div>
+
+        <div class="card w-75" id="book-card">
+          <img class="card-img-top" id="coverimg1" src="/static/book.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><span id="title1">Title</span></h5>
+            <p class="card-text"><span id="author1">Author</span></p>
+          </div>
+        </div>
+
+        <div class="card w-75" id="book-card">
+          <img class="card-img-top" id="coverimg2" src="/static/book.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><span id="title2">Title</span></h5>
+            <p class="card-text"><span id="author2">Author</span></p>
+          </div>
+        </div>
+        
+        <div class="card w-75" id="book-card">
+          <img class="card-img-top" id="coverimg3" src="/static/book.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><span id="title3">Title</span></h5>
+            <p class="card-text"><span id="author3">Author</span></p>
+          </div>
+        </div>
+
+        
+        <div class="card w-75" id="book-card">
+          <img class="card-img-top" id="coverimg4" src="/static/book.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><span id="title4">Title</span></h5>
+            <p class="card-text"><span id="author4">Author</span></p>
+          </div>
+        </div>
+              
+        <div class="card w-75" id="book-card">
+          <img class="card-img-top" id="coverimg5" src="/static/book.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><span id="title5">Title</span></h5>
+            <p class="card-text"><span id="author5">Author</span></p>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
 
 {% endblock %}
 </body>
