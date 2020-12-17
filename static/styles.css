@@ -205,7 +205,6 @@ input::-webkit-calendar-picker-indicator {
     display:flex;
     align-self: flex-start;
     background-color:white;
-    background-image: url("book.jpg");
     background-size: contain;
     background-repeat: no-repeat;
     width:95%;

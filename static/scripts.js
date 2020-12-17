@@ -113,9 +113,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
             
                         // Get thumbnail image
                         const image = data['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
-            
-                        // Set cover to image link
-                        img.src = image;
+
+                        if (image) {
+                            // Set cover to image link
+                            img.src = image;
+                        }
                     } 
             
                     else {
