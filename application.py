@@ -31,7 +31,7 @@ def search():
 @app.route("/results/<string:search>")
 def results(search):
 
-    #Title
+        #Title
         title_lookup = Book.query.filter(Book.title.ilike('%' + search + '%')).all()
         title_results = []
 
