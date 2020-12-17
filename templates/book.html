@@ -6,7 +6,7 @@
 
 {% block main %}
 
-{{ style_section | safe }}
+<!--{{ style_section | safe }}-->
 
 <!--Book cover-->
     <div class="book-container">
@@ -39,9 +39,15 @@
                     <div class="book-info-col">
                         <div class="review-content">
                           
-                          <!--Goodreads review widget-->                          
-                          {{ content_section | safe }} 
-  
+                          <!--Goodreads iframe review widget-->                          
+                          <div id="goodreads-widget">
+                            <div id="gr_header"><h1><a rel="nofollow" href="{{widgetlink}}">Goodreads reviews for {{ title }}</a></h1></div>
+                            <iframe id="the_iframe" src="{{widgetlink}}" width="565" height="400" frameborder="0"></iframe>
+                            <div id="gr_footer">
+                              <a class="gr_branding" target="_blank" rel="nofollow noopener noreferrer" href="https://www.goodreads.com/book/isbn/{{isbn}}?format=json&user_id=122566280">Reviews from Goodreads.com</a>
+                            </div>
+                          </div>
+
                        </div>   
                     </div>
                   </div>

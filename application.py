@@ -57,17 +57,11 @@ def results(search):
 
 @app.route("/reviews/<string:isbn>")
 def reviews(isbn):
-    """ Call to Goodreads API for reviews"""
+    """ Call to Goodreads API for reviews, returns string with link to iframe widget"""
+
+    widget = f"https://www.goodreads.com/api/reviews_widget_iframe?did=78001&format=html&isbn={isbn}"
     
-    # Reviews
-    res = requests.get(f"https://www.goodreads.com/book/isbn/{isbn}?format=json&user_id=122566280") 
-    
-    if res.status_code != 200:
-        raise Exception("ERROR: API request unsuccesful")
-    
-    data = res.json()
-    
-    return data        
+    return widget
 
 
 @app.route("/book/<string:isbn>")
@@ -93,17 +87,9 @@ def book(isbn):
         isbn = result.isbn
 
         # Review widget from Goodreads API
-        response = reviews(isbn)
+        widgetlink = reviews(isbn)
 
-        content = str(response['reviews_widget'])
-
-        #CSS
-        style_section = content.split("</style>")[0] + "</style>"
-        
-        # Reviews
-        content_section = content.split("</style>")[1]
-
-        return render_template("book.html",navbar = True, title=title, author=author, year=year, isbn=isbn, content_section=content_section, style_section=style_section)
+        return render_template("book.html",navbar = True, title=title, author=author, year=year, isbn=isbn, widgetlink=widgetlink)
 
 
      
