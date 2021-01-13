@@ -103,7 +103,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         // Get JSON response from Google Books API
         covers.forEach(img => {
-            fetch('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn_list[counter].innerHTML)
+            fetch('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn_list[counter].innerHTML + "&fields=kind,items(volumeInfo)")
             .then(response => response.json())
             .then(data => {
         
@@ -139,10 +139,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
         const cover = document.querySelector("#cover-img");
 
         // Get JSON response from Google Books API
-        fetch('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn)
+        fetch('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn  + "&fields=kind,items(volumeInfo)")
         .then(response => response.json())
         .then(data => {
-            
+
             // Get thumbnail image
             const image = data['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
         
