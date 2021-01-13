@@ -33,6 +33,8 @@ This was also my first time using Postgres with SQLalchemy ORM. The majority of 
 
 ## Index
 
+![Index page](https://i.ibb.co/X3465Vf/books2.jpg)
+
 ### Bestsellers
 The index page shows the top books from the NY times bestseller list. 
 Using Javascript, the ISBN numbers of the best selling books are fetched from the NY Times API. Then the book covers, title and author names are fetched from Google books and inserted into the corresponding cards.
