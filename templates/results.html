@@ -26,8 +26,9 @@
                 <div class="result-row">
                     <div class="result-col-left"></div>
                     <div class="result-col-middle"> 
-                            <div class="book-img">
-                                <a href="{{ url_for('book', isbn = result.isbn ) }}"><img class="bookcover"></a>
+                            <div class="book-img" >
+                                <a href="{{ url_for('book', isbn = result.isbn ) }}">
+                                <img class="bookcover" src="/static/book.jpg"></a>
                             </div>
                             <div class="book-info">
                                 <p class="book-title"><a href="{{ url_for('book', isbn = result.isbn ) }}">{{result.title}}</a></p>
@@ -58,7 +59,8 @@
                     <div class="result-col-left"></div>
                     <div class="result-col-middle"> 
                             <div class="book-img">
-                                <img class="bookcover">
+                                <a href="{{ url_for('book', isbn = result.isbn ) }}">
+                                <img class="bookcover" src="/static/book.jpg"></a>
                             </div>
                             <div class="book-info">
                                 <p class="book-title"><a href="{{ url_for('book', isbn = result.isbn ) }}">{{result.title}}</a></p>
@@ -89,7 +91,8 @@
                     <div class="result-col-left"></div>
                     <div class="result-col-middle"> 
                             <div class="book-img">
-                                <img class="bookcover">
+                                <a href="{{ url_for('book', isbn = result.isbn ) }}">
+                                <img class="bookcover" src="/static/book.jpg"></a>
                             </div>
                             <div class="book-info">
                                 <p class="book-title"><a href="{{ url_for('book', isbn = result.isbn ) }}">{{result.title}}</a></p>
