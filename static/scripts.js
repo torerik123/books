@@ -106,24 +106,25 @@ window.addEventListener('DOMContentLoaded', (event) => {
             fetch('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn_list[counter].innerHTML + "&fields=kind,items(volumeInfo)")
             .then(response => response.json())
             .then(data => {
-        
+                
                 if (data['items'] !== undefined) {
-            
+                    
                     if (data['items'][0]['volumeInfo']['imageLinks'] !== undefined) {
-            
+                        
                         // Get thumbnail image
                         const image = data['items'][0]['volumeInfo']['imageLinks']['thumbnail'];
 
-                        if (image !== undefined) {
+                        
+                        if (image) {
                             // Set cover to image link
                             img.src = image;
                         }
-                    } 
-            
-                    else {
-                        console.log("Book cover not found")
                     }
                 }
+
+                else {
+                    console.log("Book cover not found");
+                } 
             });
             counter++;
         });
